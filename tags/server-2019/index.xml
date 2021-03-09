@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>server 2019 on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/server-2019/</link>
+    <description>Recent content in server 2019 on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/server-2019/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quick Ansible Setup</title>
+      <link>https://test.arsano.ninja/2020/09/18/simple-ansible-setup-with-cygwin/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2020/09/18/simple-ansible-setup-with-cygwin/</guid>
+      <description>NOTE: This solution should only be used in non-production environments as a method to get familiar with Ansible. For production use, I recommend installing Ansible on a dedicated Linux server.
+An automated deployment tool is a must have for any IT environment. In my lab, that&amp;rsquo;s Ansible. I&amp;rsquo;ve used Ansible in my lab to automate VM deployment/destruction, adding SSH keys for remote access to my servers, joining/leaving AD domain, and monitoring the newly deployed VMs.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fcd on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/fcd/</link>
+    <description>Recent content in fcd on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Fri, 02 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/fcd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring API-only Features of First Class Disks</title>
+      <link>https://test.arsano.ninja/2020/10/02/vmware-codeconnect-2020/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2020/10/02/vmware-codeconnect-2020/</guid>
+      <description>Today I&amp;rsquo;ll be presenting at VMware CodeConnect on what might be the best kept secret of vSphere&amp;hellip;First Class Disks! If you don&amp;rsquo;t know what they are or you&amp;rsquo;d like information on capabilities and use cases, I recommend you tune in!
+If anyone has any follow-up questions after the presentation, please feel free to reach out to me via Twitter or VMware Code Slack.
+UPDATE:
+  Here are the slides from my presentation:</description>
+    </item>
+    
+  </channel>
+</rss>

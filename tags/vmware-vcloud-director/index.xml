@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vmware vcloud director on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/vmware-vcloud-director/</link>
+    <description>Recent content in vmware vcloud director on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Thu, 13 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/vmware-vcloud-director/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Veeam Plugin for vCD w/ SSO</title>
+      <link>https://test.arsano.ninja/2020/02/13/veeam-plugin-for-vcd-with-sso/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2020/02/13/veeam-plugin-for-vcd-with-sso/</guid>
+      <description>With the release of Veeam Backup &amp;amp; Replication version 10 around the corner, it&amp;rsquo;s only fitting that we get some added goodness with a new version of the Veeam Plugin for vCloud Director. I&amp;rsquo;m happy to announce that a new version of the plugin is available today!
+New features of the plugin include:
+ Single Sign-On (SSO) capability Support for Veeam Backup &amp;amp; Replication version 10 Support for VMware vCloud Director 10  Documentation for deployment &amp;amp; configuration of this plugin can be found here.</description>
+    </item>
+    
+    <item>
+      <title>First Look: Veeam Plugin for vCD </title>
+      <link>https://test.arsano.ninja/2019/09/27/introduction-veeam-plugin-for-vcd/</link>
+      <pubDate>Fri, 27 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2019/09/27/introduction-veeam-plugin-for-vcd/</guid>
+      <description>Veeam Backup &amp;amp; Replication version 9.5 released the vCloud Director (vCD) Self Service Portal that leverages Enterprise Manager and allows vCD Tenants to fully administer backups for their vCD workloads. Upon release, Veeam made consumption of this Self Service Portal as easy as possible as it leverages vCD authentication for tenants so they don&amp;rsquo;t have to manage two sets of credentials. Even so, it was still a separate portal independent of vCD.</description>
+    </item>
+    
+  </channel>
+</rss>
