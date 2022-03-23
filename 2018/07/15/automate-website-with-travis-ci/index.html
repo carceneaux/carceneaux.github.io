@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Automating Testing &amp; Deployment of your Website &middot; Chris Arceneaux</title>
+        <meta name="description" content="Leverage Travis-CI to validate/build a website and deploy it.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.95.0" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Automating Testing &amp; Deployment of your Website">
+<meta property="og:description" content="Leverage Travis-CI to validate/build a website and deploy it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://test.arsano.ninja/2018/07/15/automate-website-with-travis-ci/">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/site.css">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/chris_arceneaux" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" aria-label="Gitlab" href="https://gitlab.com/carceneaux" rel="me">
+                                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/carceneaux" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/chris-arceneaux-8903047/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:carcenea@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/tags/">Tags</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Automating Testing &amp; Deployment of your Website</h1>
+    
+        <p class="post-description" itemprop="description">Leverage Travis-CI to validate/build a website and deploy it.</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-07-15" itemprop="datePublished">Sun, Jul 15, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://test.arsano.ninja/page/about/" itemprop="url" rel="author">Chris Arceneaux</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 8 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p>As websites go, mine is definitely in its infancy. This past week, I brought my website online by following a couple blog posts of some fellow colleagues (<a href="https://www.thomgreene.com/post/2018/2018-05-29-staticsitehugo/">Thom Greene</a> &amp; <a href="https://miketabor.com/host-static-website-using-aws-s3/">Mike Tabor</a>). The help they provided was invaluable as I was able to register a domain and get a website going in a short period of time.</p>
+<p>After following their instructions, I immediately knew what I wanted to do to add to their instructions&hellip;.I wanted to add more Automation! <em>(Yes, I&rsquo;m addicted&hellip;)</em></p>
+<p>Here are the following automated features I set out to add to my website:</p>
+<ul>
+<li>Validation of Markdown
+<ul>
+<li>I&rsquo;m pretty confident in my markdown-fu but everyone makes mistakes.</li>
+</ul>
+</li>
+<li>Generation of website (using Hugo)</li>
+<li>Deployment of website to hosted S3 storage</li>
+<li>CloudFront Invalidation (tells AWS to pull in the latest content)</li>
+</ul>
+<h2 id="travis-ci">Travis-CI</h2>
+<p>I knew that I needed a CI/CD solution to fulfill any of my features and, most of all, I wanted it to be <em>free</em>. With that, I found <a href="https://travis-ci.org/">Travis-CI</a>. It was easy to learn and very robust. To be honest, I&rsquo;ve been immensely impressed with Travis-CI.</p>
+<h2 id="prerequisites-for-following-the-instructions-below">[Prerequisites for following the instructions below]</h2>
+<ul>
+<li>A Hugo-based website</li>
+<li>AWS S3 bucket used for back-end storage</li>
+<li>AWS CloudFront used to serve out website</li>
+<li>GitHub repo used to store Hugo source files</li>
+<li>Travis-CI enabled for aforementioned GitHub repo <a href="https://docs.travis-ci.com/user/getting-started/#To-get-started-with-Travis-CI">(see here)</a></li>
+</ul>
+<p>(My next post will show how to use Travis-CI for a GitHub pages setup.)</p>
+<h2 id="automating-the-thangs">Automating the Thangs</h2>
+<p>Each of the features I wanted to automate you can find in its own section below.</p>
+<h3 id="1-validation-of-markdown">1. Validation of Markdown</h3>
+<p>With a little googling, I found a Ruby-based <a href="https://github.com/markdownlint/markdownlint">Markdown Lint tool</a> that was pretty solid. Better yet, from watching the Travis-CI build logs, I knew that ruby was already installed in the base testing environment.</p>
+<p>With that in mind, I only had to include the following lines in my <code>.travis.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c">### Installing pre-requisites</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">gem install mdl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Testing markdown</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">script</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">mdl -r ~MD002,~MD013,~MD033 content/</span><span class="w"> </span><span class="c"># these rules have been exluded</span><span class="w">
+</span></span></span></code></pre></div><p>That&rsquo;s it! Easy peasy lemon squeezy!</p>
+<p>You&rsquo;ll notice that I excluded some of the rules when checking. I did this as I found these rules were not beneficial for a website. On another note, I also recommend you install a Markdown Lint program on your IDE as well. <em>(I use <a href="https://code.visualstudio.com/">Microsoft Visual Studio Code</a> for my IDE and <a href="https://github.com/DavidAnson/vscode-markdownlint">markdownlint</a>.)</em></p>
+<h3 id="2-generation-of-website-using-hugo">2. Generation of Website using Hugo</h3>
+<p>The more you use Travis-CI, the more you&rsquo;ll find there are multiple methods to accomplish your goal. I think this speaks volumes to how powerful the tool really is. I ended up finding another <a href="https://jellis18.github.io/post/2017-12-03-continuous-integration-hugo/">article</a> online that had the pieces of code that I thought accomplished my goal the simplest.</p>
+<p>Here&rsquo;s the code I included in my <code>.travis.yml</code> to have Hugo execute a build:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c">### Installing pre-requisites</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">wget https://github.com/gohugoio/hugo/releases/download/v0.44/hugo_0.44_Linux-64bit.deb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">sudo dpkg -i hugo*.deb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Building website</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">script</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo</span><span class="w">
+</span></span></span></code></pre></div><p>Note: The version of Hugo listed above was the latest stable version upon writing this post. To identify the latest version when you&rsquo;re configuring this I recommend you go <a href="https://github.com/gohugoio/hugo/releases/">here</a>.</p>
+<h3 id="3-deployment-of-website-to-hosted-s3-storage">3. Deployment of website to hosted S3 storage</h3>
+<p>When I was researching the method to accomplish this feature was when my eyes opened up to how robust Travis-CI is with what they offer pre-packaged with the tool for free.</p>
+<p>The <a href="https://docs.travis-ci.com/user/deployment">Travis-CI Deployment Documentation</a> speaks for itself. For this feature, I used the documentation found <a href="https://docs.travis-ci.com/user/deployment/s3/">here</a>.</p>
+<p>To set this up, we&rsquo;ll have additional steps in the Travis-CI Web UI and the AWS IAM Console.</p>
+<h4 id="code-for-travis-ci-aws-s3">Code for Travis-CI: AWS S3</h4>
+<p>First things first, here&rsquo;s the necessary code for the <code>.travis.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c">### Sending newly generated website to S3 bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Control deployment by setting a value for `on`. Setting the `branch`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># option to `master` means Travis will only attempt a deployment on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># builds of your repo&#39;s master branch (e.g., after you merge a PR).</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">s3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># You can refer to environment variables from Travis repo settings!</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">access_key_id</span><span class="p">:</span><span class="w"> </span><span class="l">$AWS_ACCESS_KEY_ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">secret_access_key</span><span class="p">:</span><span class="w"> </span><span class="l">$AWS_SECRET_ACCESS_KEY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Name of the S3 bucket to which your site should be uploaded.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l">$S3_BUCKET</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Prevent Travis from deleting your built site so it can be uploaded.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">skip_cleanup</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Path to a directory containing your built site.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">local_dir</span><span class="p">:</span><span class="w"> </span><span class="l">public</span><span class="w"> </span><span class="c"># Default build directory for Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Set the Cache-Control header.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cache_control</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;max-age=21600&#34;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="create-aws-iam-user-for-travis-ci">Create AWS IAM user for Travis-CI</h4>
+<p>The reason for this step is for good security. The user we are about to create will have limited access to your AWS environment. If you desire, you could restrict the account even further by restricting it to only the S3 bucket and AWS CloudFront instance that you want it to interact with. For our purposes, I feel this is sufficient but to each his own.</p>
+<ul>
+<li>Navigate to the <a href="https://console.aws.amazon.com/iam/home#/users">AWS Identity &amp; Access Management (IAM) portal</a></li>
+<li>Click <strong>Add User</strong>
+<ul>
+<li>Set <strong>User name</strong>. <em>ie. travis-ci</em></li>
+<li>For <strong>Access type</strong>, select <strong>Programmatic access</strong></li>
+<li>Click <strong>Next: Permissions</strong></li>
+</ul>
+</li>
+<li>Select <strong>Attach existing policies directly</strong>
+<ul>
+<li>Mark the following policies:
+<ul>
+<li><strong>AmazonS3FullAccess</strong></li>
+<li><strong>CloudFrontFullAccess</strong>
+<ul>
+<li><em>This is for the next section.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Click <strong>Next: Review</strong></li>
+</ul>
+</li>
+<li>Keep credentials on-screen for next step</li>
+</ul>
+<h4 id="define-environment-variables-within-the-travis-ci-web-ui-aws-s3">Define Environment Variables within the Travis-CI Web UI: AWS S3</h4>
+<p><strong>Note:</strong> You could define these variables straight in the <code>.travis.yml</code> but then you&rsquo;d have to encrypt them following <a href="https://docs.travis-ci.com/user/environment-variables/#Defining-encrypted-variables-in-.travis.yml">this process</a>. Per Travis-CI docs, the only time it makes sense to put encrypted variables in the <code>.travis.yml</code>, is when the variable will change depending on the branch being committed.</p>
+<ul>
+<li>In the <a href="https://travis-ci.org/">Travis-CI Web UI</a>, edit the <strong>Settings</strong> for the GitHub repo with your Hugo source files.</li>
+<li>Add the following environment variables using these <em>exact</em> names:
+<ul>
+<li><strong>AWS_ACCESS_KEY_ID</strong>
+<ul>
+<li>Created in previous step</li>
+</ul>
+</li>
+<li><strong>AWS_SECRET_ACCESS_KEY</strong>
+<ul>
+<li>Created in previous step</li>
+</ul>
+</li>
+<li><strong>S3_BUCKET</strong>
+<ul>
+<li>S3 bucket name that holds your static website</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note: Make sure to leave the Travis-CI environment variable on its default value for <em>Display value in build log</em>. <em><strong>NEVER</strong></em> display your AWS access key and secret key on the internet. Within an hour, you&rsquo;ll have people creating servers in your name in AWS! On that note, set an alert for yourself in AWS if your bill exceeds a certain amount. <em>This is a good idea for another blog article&hellip;</em></p>
+<h3 id="4-cloudfront-invalidation-tells-aws-to-pull-in-the-latest-content">4. CloudFront Invalidation (tells AWS to pull in the latest content)</h3>
+<p>In <a href="https://www.thomgreene.com/post/2018/2018-05-29-staticsitehugo/">Thom Greene&rsquo;s article</a> that I referenced previously, he brought out the need to <em>invalidate</em> the CloudFront cache to force the latest content of your website to be re-cached. Without doing this, the CloudFront cache expires every 24 hours by default. The method he suggests is a simple AWS CLI command to do the deed.</p>
+<pre tabindex="0"><code class="language-cli" data-lang="cli">aws cloudfront create-invalidation --distribution-id %distID% --paths &#34;/*&#34;
+</code></pre><h4 id="identifying-your-cloudfront-id">Identifying your CloudFront ID</h4>
+<p>Notice the variable <code>%distID%</code> being used in this command. This works fine when executed from my Mac, but does not work when executed in Travis-CI. This is not hard to overcome. You simply need to go to the <a href="https://console.aws.amazon.com/cloudfront/home?#">AWS CloudFront Console</a> and capture the <strong>ID</strong> of your CloudFront instance.</p>
+<h4 id="define-environment-variables-within-the-travis-ci-web-ui-aws-cloudfront">Define Environment Variables within the Travis-CI Web UI: AWS CloudFront</h4>
+<ul>
+<li>In the <a href="https://travis-ci.org/">Travis-CI Web UI</a>, edit the <strong>Settings</strong> for the GitHub repo with your Hugo source files.</li>
+<li>Add the following environment variables using these <em>exact</em> names:
+<ul>
+<li><strong>AWS_ACCESS_KEY_ID</strong>
+<ul>
+<li>Should be already defined</li>
+</ul>
+</li>
+<li><strong>AWS_SECRET_ACCESS_KEY</strong>
+<ul>
+<li>Should be already defined</li>
+</ul>
+</li>
+<li><strong>CLOUDFRONT_DISTRIBUTION_ID</strong>
+<ul>
+<li>Captured info in previous step</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="code-for-travis-ci-aws-cloudfront">Code for Travis-CI: AWS CloudFront</h4>
+<p>Here&rsquo;s the necessary code for the <code>.travis.yml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c">### Python is necessary for AWS CLI</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l">python</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">python</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s2">&#34;3.6.5&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Installing pre-requisites</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">pip install awscli</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Forcing AWS CloudFront to refresh its cache</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">after_deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Invalidate every object in the targeted distribution.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths &#34;/*&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>Looking at the code above, you&rsquo;ll see that Travis-CI is simply being instructed to install the AWS CLI. You might be wondering, <em>&ldquo;but how is aws cli going to authenticate to my AWS environment?&rdquo;</em> The answer is in the Travis-CI environment variables we created previously. The same ones we created for the S3 transfer, aws cli is able to use as well.</p>
+<h2 id="putting-everything-together">Putting Everything Together</h2>
+<p>To make the code easier to understand, I piecemealed the <code>.travis.yml</code> thus far. Below you&rsquo;ll find the complete <code>.travis.yml</code> including all of the features that I&rsquo;ve discussed in this post:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c">### Python is necessary for AWS CLI</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l">python</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">python</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s2">&#34;3.6.5&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Installing pre-requisites</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">wget https://github.com/gohugoio/hugo/releases/download/v0.44/hugo_0.44_Linux-64bit.deb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">sudo dpkg -i hugo*.deb</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">pip install awscli</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">gem install mdl</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Testing markdown and building website</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">script</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">mdl -r ~MD002,~MD013,~MD033 content/</span><span class="w"> </span><span class="c"># rules MD013 &amp; MD033 have been exluded</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Sending newly generated website to S3 bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Control deployment by setting a value for `on`. Setting the `branch`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># option to `master` means Travis will only attempt a deployment on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># builds of your repo&#39;s master branch (e.g., after you merge a PR).</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">s3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># You can refer to environment variables from Travis repo settings!</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">access_key_id</span><span class="p">:</span><span class="w"> </span><span class="l">$AWS_ACCESS_KEY_ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">secret_access_key</span><span class="p">:</span><span class="w"> </span><span class="l">$AWS_SECRET_ACCESS_KEY</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Name of the S3 bucket to which your site should be uploaded.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l">$S3_BUCKET</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Prevent Travis from deleting your built site so it can be uploaded.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">skip_cleanup</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Path to a directory containing your built site.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">local_dir</span><span class="p">:</span><span class="w"> </span><span class="l">public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Set the Cache-Control header.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cache_control</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;max-age=21600&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">### Forcing AWS CloudFront to refresh its cache</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">after_deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Invalidate every object in the targeted distribution.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths &#34;/*&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>One final point that I&rsquo;ll bring out is to pay attention to the procession of the code in the <code>.travis.yml</code>.</p>
+<ol>
+<li>Define any special coding languages that need to be used.</li>
+<li>Install pre-requisites</li>
+<li>Run testing code</li>
+<li>Deploy code to production</li>
+<li>Define code to deploy afterwards</li>
+</ol>
+<p>It&rsquo;s important to note that these steps are executed as a <strong>whole</strong>. For example, if the Markdown validation fails in step #3 - <code>mdl -r ~MD002,~MD013,~MD033 content/</code> - Travis-CI will continue to execute the <code>hugo</code> command as it&rsquo;s a part of step #3. It will not, however, continue to step #4 and will fail out the build.</p>
+<h2 id="feedback">Feedback</h2>
+<p>I hope you find this post useful! I know it&rsquo;s been a learning experience for me as I&rsquo;ve never used Travis-CI previously.</p>
+<p>Please leave feedback below as it will be appreciated. If you have ideas for future posts that you&rsquo;d like to see, please let me know and I&rsquo;ll look into it.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/ci/cd/">ci/cd</a>, 
+                <a href="/tags/travis-ci/">travis-ci</a>, 
+                <a href="/tags/route53/">route53</a>, 
+                <a href="/tags/cloudfront/">cloudfront</a>, 
+                <a href="/tags/github/">github</a>, 
+                <a href="/tags/s3/">s3</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=Automating%20Testing%20%26%20Deployment%20of%20your%20Website&url=https%3a%2f%2ftest.arsano.ninja%2f2018%2f07%2f15%2fautomate-website-with-travis-ci%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Automating%20Testing%20%26%20Deployment%20of%20your%20Website&url=https%3a%2f%2ftest.arsano.ninja%2f2018%2f07%2f15%2fautomate-website-with-travis-ci%2f&summary=Leverage%20Travis-CI%20to%20validate%2fbuild%20a%20website%20and%20deploy%20it."
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2022 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://test.arsano.ninja/js/jquery-1.11.3.min.js"></script>
+        <script src="https://test.arsano.ninja/js/jquery.fitvids.js"></script>
+        <script src="https://test.arsano.ninja/js/scripts.js"></script>
+        
+    </body>
+</html>
+

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ansible Update for Veeam v11 &middot; Chris Arceneaux</title>
+        <meta name="description" content="Veeam Collection for Ansible">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.95.0" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Ansible Update for Veeam v11">
+<meta property="og:description" content="Veeam Collection for Ansible">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://test.arsano.ninja/2021/03/03/veeam-ansible-collection-v11/">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/site.css">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/chris_arceneaux" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" aria-label="Gitlab" href="https://gitlab.com/carceneaux" rel="me">
+                                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/carceneaux" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/chris-arceneaux-8903047/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:carcenea@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/tags/">Tags</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Ansible Update for Veeam v11</h1>
+    
+        <p class="post-description" itemprop="description">Veeam Collection for Ansible</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2021-03-03" itemprop="datePublished">Wed, Mar 3, 2021</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://test.arsano.ninja/page/about/" itemprop="url" rel="author">Chris Arceneaux</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 3 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p>Veeam Backup &amp; Replication v11 officially launched last week! With a new version of the product that is jam-packed with features, it&rsquo;s no wonder that it&rsquo;s already passed 15,000 unique downloads! Even before it was released, I was already being asked the question&hellip;when will the <a href="https://github.com/VeeamHub/veeam-ansible">Veeam Collection for Ansible</a> support v11?</p>
+<p>The answer is&hellip;right now! The <a href="https://github.com/VeeamHub/veeam-ansible">collection</a> now fully supports all major components of the Veeam Availablility Suite:</p>
+<ul>
+<li>Veeam Backup &amp; Replication</li>
+<li>Veeam Backup Enterprise Manager</li>
+<li>Veeam ONE</li>
+</ul>
+<p>To the credit of the Veeam development team, there wasn&rsquo;t much I had to do on my end for this. As a matter of fact, new installs of VBR/EM worked with no adjustments required!</p>
+<p>So what changes were required? Don&rsquo;t worry, I&rsquo;ll cover these in the remainder of this post&hellip;</p>
+<h2 id="multi-version-support">Multi-version Support</h2>
+<p>Probably the most notable change you&rsquo;ll see when reviewing the <a href="https://github.com/VeeamHub/veeam-ansible/tree/master/roles/veeam_vas#example-playbooks">sample playbooks</a> in the documentation is that every playbook now contains the <code>version</code> parameter. This was done to make it very clear what version of Veeam the playbook was being installed or upgraded to.</p>
+<p><em>If the <code>version</code> parameter isn&rsquo;t specified, the default of <code>&quot;11&quot;</code> will be used.</em></p>
+<p>Another benefit to this approach is I added an additional check that makes sure the DVD ISO of the product being used matches the version you wanted in the playbook. This came about after I used the incorrect ISO&hellip;several different times&hellip; 😊</p>
+<h2 id="veeam-backup--replication--enterprise-manager">Veeam Backup &amp; Replication / Enterprise Manager</h2>
+<h3 id="switch-from-powershell-snapin-to-module">Switch from PowerShell SnapIn to Module</h3>
+<p>This was a rather simple fix. Anywhere I previous added the Veeam SnapIn, I replaced it with code below to check if the Veeam Module was available. This dynamic selection of the two allowed me to maintain backwards compatiblity for previous versions (&lt;v11).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">-Not</span> <span class="p">(</span><span class="nb">Get-Module</span> <span class="n">-ListAvailable</span> <span class="n">-Name</span> <span class="n">Veeam</span><span class="p">.</span><span class="n">Backup</span><span class="p">.</span><span class="n">PowerShell</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Add-PSSnapin</span> <span class="n">-PassThru</span> <span class="n">VeeamPSSnapIn</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="veeam-agent-for-macos-resdistributable">Veeam Agent for MacOS Resdistributable</h3>
+<p>As this is a net new product, it wasn&rsquo;t included in my previously automated install/upgrade process. This was simple enough to add&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl">- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Install Veeam Agent for MacOS Redistributable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ansible.windows.win_package</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ source }}Packages\\VAMRedist.msi&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l">present</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">arguments</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/L*v &#34;{{ destination }}logs\\VAMRedist.log&#34; /norestart /qn ACCEPTEULA=&#34;YES&#34; ACCEPT_THIRDPARTY_LICENSES=&#34;1&#34;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l">version | int &gt;= 11</span><span class="w">
+</span></span></span></code></pre></div><h2 id="veeam-one">Veeam ONE</h2>
+<h3 id="new-software-prerequisites">New Software Prerequisites</h3>
+<p>A new and improved UI in Veeam ONE meant different software required to be installed prior to kicking off the Veeam ONE install. Here&rsquo;s a list of the new prerequisites:</p>
+<ul>
+<li>Microsoft OLE DB Driver for SQL Server</li>
+<li>Microsoft .NET Core Runtime</li>
+<li>Microsoft ASP.NET Core Shared Framework</li>
+<li>Microsoft Visual C++ Redistributable</li>
+<li>Microsoft Application Request Routing</li>
+<li>IIS URL Rewrite Module</li>
+<li>IIS WebSocket Protocol Component</li>
+</ul>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>On top of the changes made here, I also made minor changes throughout the collection improving verbiage to make things more clear and improving the overall flow of the collection. If you&rsquo;d like to see all changes in detail, here&rsquo;s a <a href="https://github.com/VeeamHub/veeam-ansible/commit/f39a3345fa8af2e264fa5ba9e29fc3b602dd924e">link to the PR</a> with this information.</p>
+<p>If you have questions or feedback regarding the collection, feel free to <a href="https://github.com/VeeamHub/veeam-ansible/issues/new/choose">create an issue</a> in GitHub.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/veeam/">veeam</a>, 
+                <a href="/tags/ansible/">ansible</a>, 
+                <a href="/tags/11/">11</a>, 
+                <a href="/tags/v11/">v11</a>, 
+                <a href="/tags/collection/">collection</a>, 
+                <a href="/tags/role/">role</a>, 
+                <a href="/tags/automation/">automation</a>, 
+                <a href="/tags/vbr/">vbr</a>, 
+                <a href="/tags/em/">em</a>, 
+                <a href="/tags/one/">one</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=Ansible%20Update%20for%20Veeam%20v11&url=https%3a%2f%2ftest.arsano.ninja%2f2021%2f03%2f03%2fveeam-ansible-collection-v11%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Ansible%20Update%20for%20Veeam%20v11&url=https%3a%2f%2ftest.arsano.ninja%2f2021%2f03%2f03%2fveeam-ansible-collection-v11%2f&summary=Veeam%20Collection%20for%20Ansible"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2022 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://test.arsano.ninja/js/jquery-1.11.3.min.js"></script>
+        <script src="https://test.arsano.ninja/js/jquery.fitvids.js"></script>
+        <script src="https://test.arsano.ninja/js/scripts.js"></script>
+        
+    </body>
+</html>
+

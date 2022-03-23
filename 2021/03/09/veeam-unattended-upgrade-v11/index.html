@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Automated Upgrade to Veeam v11 &middot; Chris Arceneaux</title>
+        <meta name="description" content="Easy PowerShell Script to Update Veeam">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.95.0" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Automated Upgrade to Veeam v11">
+<meta property="og:description" content="Easy PowerShell Script to Update Veeam">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://test.arsano.ninja/2021/03/09/veeam-unattended-upgrade-v11/">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/site.css">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/chris_arceneaux" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" aria-label="Gitlab" href="https://gitlab.com/carceneaux" rel="me">
+                                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/carceneaux" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/chris-arceneaux-8903047/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:carcenea@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/tags/">Tags</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Automated Upgrade to Veeam v11</h1>
+    
+        <p class="post-description" itemprop="description">Easy PowerShell Script to Update Veeam</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2021-03-09" itemprop="datePublished">Tue, Mar 9, 2021</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://test.arsano.ninja/page/about/" itemprop="url" rel="author">Chris Arceneaux</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 2 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p>After the release of Veeam Backup &amp; Replication v10 last year, I wrote a <a href="https://github.com/VeeamHub/powershell/tree/master/BR-UpgradeV10">PowerShell script to automate the upgrade</a>. It&rsquo;s as easy as they come as it enabled one-click upgrades of Veeam environments.</p>
+<p>With the release of v11, I wanted to continue the tradition to enable those with multiple Veeam servers, the <em>easy</em> button for mass upgrades to the latest version of the product. I&rsquo;m happy to announce the release of an updated version of this script for v11!</p>
+<p><a href="https://github.com/VeeamHub/powershell/tree/master/BR-UpgradeV11">Automated Upgrade to Veeam Backup &amp; Replication v11</a></p>
+<p>This script supports automated upgrade for the following products:</p>
+<ul>
+<li>Veeam Backup &amp; Replication</li>
+<li>Veeam Backup Enterprise Manager</li>
+</ul>
+<p><em><strong>Includes support for Veeam Cloud Connect environments!</strong></em></p>
+<h2 id="changes-in-the-upgrade-process-v10-to-v11">Changes in the upgrade process v10 to v11</h2>
+<p>Kudos to the Veeam development team as the upgrade process between these two versions was nearly identical! Please see below for a detailed list on what changes I made to this script to support v11.</p>
+<h3 id="powershell-snapin-to-module">PowerShell SnapIn to Module</h3>
+<p>The switch from a PowerShell SnapIn to Module enabled support for the latest versions of PowerShell. While PowerShell Core is still not fully supported, this is definitely a step in the right direction.</p>
+<p>Key thing to note for the new Veeam Module is there is <strong>no longer any need to import the module in your PowerShell scripts</strong>. The first time you execute a Veeam cmdlet, the module will auto-import itself into your PowerShell session.</p>
+<h3 id="veeam-agent-for-macos-redistributable">Veeam Agent for MacOS Redistributable</h3>
+<p>With the arrival of this new product, there is a net new package to be installed during the upgrade.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>On top of the changes listed above, I also made minor changes throughout the script to improve compatibility with Server 2016 and error handling as sometimes <em>msiexec</em> returned other codes than <code>0</code> for successful installs.</p>
+<p>If you have questions or feedback regarding this script, feel free to <a href="https://github.com/VeeamHub/powershell/issues/new/choose">create an issue</a> in GitHub.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/veeam/">veeam</a>, 
+                <a href="/tags/powershell/">powershell</a>, 
+                <a href="/tags/11/">11</a>, 
+                <a href="/tags/v11/">v11</a>, 
+                <a href="/tags/automation/">automation</a>, 
+                <a href="/tags/unattended/">unattended</a>, 
+                <a href="/tags/upgrade/">upgrade</a>, 
+                <a href="/tags/vbr/">vbr</a>, 
+                <a href="/tags/em/">em</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=Automated%20Upgrade%20to%20Veeam%20v11&url=https%3a%2f%2ftest.arsano.ninja%2f2021%2f03%2f09%2fveeam-unattended-upgrade-v11%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Automated%20Upgrade%20to%20Veeam%20v11&url=https%3a%2f%2ftest.arsano.ninja%2f2021%2f03%2f09%2fveeam-unattended-upgrade-v11%2f&summary=Easy%20PowerShell%20Script%20to%20Update%20Veeam"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2022 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://test.arsano.ninja/js/jquery-1.11.3.min.js"></script>
+        <script src="https://test.arsano.ninja/js/jquery.fitvids.js"></script>
+        <script src="https://test.arsano.ninja/js/scripts.js"></script>
+        
+    </body>
+</html>
+

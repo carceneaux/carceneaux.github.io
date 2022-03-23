@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ci/cd on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/ci/cd/</link>
+    <description>Recent content in ci/cd on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright><atom:link href="https://test.arsano.ninja/tags/ci/cd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Introduction to CI/CD with Python</title>
+      <link>https://test.arsano.ninja/2019/06/22/introduction-to-cicd-with-python/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2019/06/22/introduction-to-cicd-with-python/</guid>
+      <description>   Useful Links  GitLab CI  GitLab CI Sample Code Test and deploy a Python application with GitLab CI/CD Using GitLab CI/CD with a GitHub repository GitLab CI Documentation   Travis CI  Travis CI Sample Code Travis CI DPL - can be used with GitLab CI as well! Travis CI Documentation     </description>
+    </item>
+    
+    <item>
+      <title>GitLab CI Artifact Expiration</title>
+      <link>https://test.arsano.ninja/2019/05/09/automate-gitlab-artifact-deletion/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2019/05/09/automate-gitlab-artifact-deletion/</guid>
+      <description>Note: If you&amp;rsquo;re unfamiliar with GitLab CI, I highly recommend you try it out on GitLab.com for free.
+A few months ago, the disk space on my on-prem GitLab instance began to fill up. Fortunately for me, my monitoring reported the issue before it became a major problem. My first thought was, why is this happening? I knew that I had provisioned more than enough space and there should be no reason it was almost full.</description>
+    </item>
+    
+    <item>
+      <title>Automating GitHub Pages Deployment</title>
+      <link>https://test.arsano.ninja/2018/07/21/automating-github-pages-deployment/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2018/07/21/automating-github-pages-deployment/</guid>
+      <description>Following the instructions for this post will enable you to use Travis-CI to deploy a Hugo-based website to GitHub Pages.
+When I set out to build the website for my blog, I knew I wanted to have the ability to dynamically generate my website as well as to be able to change the theme (appearance) of the website very easily. While researching the methods to accomplish this, two tools seemed to pop up the most:</description>
+    </item>
+    
+    <item>
+      <title>Automating Testing &amp; Deployment of your Website</title>
+      <link>https://test.arsano.ninja/2018/07/15/automate-website-with-travis-ci/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2018/07/15/automate-website-with-travis-ci/</guid>
+      <description>As websites go, mine is definitely in its infancy. This past week, I brought my website online by following a couple blog posts of some fellow colleagues (Thom Greene &amp;amp; Mike Tabor). The help they provided was invaluable as I was able to register a domain and get a website going in a short period of time.
+After following their instructions, I immediately knew what I wanted to do to add to their instructions&amp;hellip;.</description>
+    </item>
+    
+  </channel>
+</rss>

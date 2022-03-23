@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GitLab CI Artifact Expiration &middot; Chris Arceneaux</title>
+        <meta name="description" content="Discussion on proper handling of GitLab CI Job Artifacts.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.95.0" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="GitLab CI Artifact Expiration">
+<meta property="og:description" content="Discussion on proper handling of GitLab CI Job Artifacts.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://test.arsano.ninja/2019/05/09/automate-gitlab-artifact-deletion/">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/site.css">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/chris_arceneaux" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" aria-label="Gitlab" href="https://gitlab.com/carceneaux" rel="me">
+                                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/carceneaux" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/chris-arceneaux-8903047/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:carcenea@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/tags/">Tags</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">GitLab CI Artifact Expiration</h1>
+    
+        <p class="post-description" itemprop="description">Discussion on proper handling of GitLab CI Job Artifacts.</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-05-09" itemprop="datePublished">Thu, May 9, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://test.arsano.ninja/page/about/" itemprop="url" rel="author">Chris Arceneaux</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 3 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p><em><strong>Note:</strong> If you&rsquo;re unfamiliar with GitLab CI, I highly recommend you try it out on GitLab.com for free.</em></p>
+<p>A few months ago, the disk space on my on-prem GitLab instance began to fill up. Fortunately for me, my monitoring reported the issue before it became a major problem. My first thought was, <em>why is this happening?</em> I knew that I had provisioned more than enough space and there should be no reason it was almost full.</p>
+<p>After a brief investigation, I found that the <em>build artifacts</em> section of most of my repositories was 99% of the total repository size&hellip;some of them being over 40GB! That&rsquo;s when I went down the rabbit hole of artifact expiration. In this post, we&rsquo;ll focus on the <em>solution</em> to this problem as well as a <em>stop-gap</em>.</p>
+<h2 id="solution">Solution</h2>
+<h3 id="set-default-artifact-expiration-policy-_on-prem-only_">Set Default Artifact Expiration Policy <em>(On-Prem Only)</em></h3>
+<p>The <a href="https://docs.gitlab.com/ee/user/gitlab_com/index.html#gitlab-cicd">GitLab default policy for artifact expiration</a> differs between GitLab.com and on-prem GitLab versions. Depending on your GitLab CI workloads, pipeline size, job runtimes, and <em>disk size</em> 😊, you&rsquo;ll want to set the expiration time that works best for your environment. Always err on the side of larger for your default setting as you don&rsquo;t want to negatively affect a job run because the artifact was deleted too soon.</p>
+<p><a href="https://docs.gitlab.com/ee/user/admin_area/settings/continuous_integration.html#default-artifacts-expiration-core-only">GitLab Documentation on default artifact expiration.</a></p>
+<table>
+<thead>
+<tr>
+<th><strong>Setting</strong></th>
+<th><strong>GitLab.com</strong></th>
+<th><strong>On-Prem GitLab Versions</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artifacts <a href="https://docs.gitlab.com/ee/ci/yaml/README.html#artifactsexpire_in">expiry time</a></td>
+<td>kept forever</td>
+<td>30 days</td>
+</tr>
+</tbody>
+</table>
+<h3 id="set-artifact-expiration-in-_gitlab-ciyml_">Set Artifact Expiration in <em>.gitlab-ci.yml</em></h3>
+<p>Starting with GitLab 8.9 artifact expiration within the <code>.gitlab-ci.yml</code> became possible. This becomes a necessity if you&rsquo;re using GitLab.com as you&rsquo;re unable to set the default artifact expiration policy. It also gives you finer control in on-prem GitLab instances as it allows you to delete an artifact prior to when the default expiration policy comes into effect.</p>
+<p><a href="https://docs.gitlab.com/ee/ci/yaml/#artifactsexpire_in">GitLab Documentation on the <code>artifacts:expire_in</code> setting.</a></p>
+<p><strong>Sample:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">job</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">expire_in</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="l">week</span><span class="w">
+</span></span></span></code></pre></div><h2 id="stop-gap">Stop-Gap</h2>
+<p>Now that I&rsquo;ve discussed proper handling of Job Artifacts, let&rsquo;s move on to the stop-gap&hellip; It&rsquo;s all fine and dandy to know about proper artifact expiration settings but what do I do with the artifacts that were created previously? GitLab provides two methods for deleting artifacts that have no expiration:</p>
+<ul>
+<li>GitLab Web UI</li>
+<li>GitLab REST API</li>
+</ul>
+<p>Deleting artifacts via the Web UI is a non-starter IMO unless you want to delete only a few. That leaves the best option to be leveraging the REST API. In my searching, I came upon a very helpful <a href="https://forum.gitlab.com/t/remove-all-artifact-no-expire-options/9274/8">GitLab forum post</a>. This served as the base for the script I used to clean up my artifacts. I hope this serves you well.</p>
+<h3 id="bash-script-for-removing-gitlab-job-artifacts">Bash Script for removing GitLab Job Artifacts</h3>
+<p><a href="https://gist.github.com/carceneaux/b75d483e3e0cb798ae60c424300d5a0b">Script Source Code</a></p>
+<p>Prior to running the script, make sure you have <code>curl</code> and <code>jq</code> installed and you&rsquo;ve updated the <code>project_id</code>, <code>token</code>, and <code>server</code> variables to match your environment.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/gitlab/">gitlab</a>, 
+                <a href="/tags/gitlab-ci/">gitlab ci</a>, 
+                <a href="/tags/ci/cd/">ci/cd</a>, 
+                <a href="/tags/bash/">bash</a>, 
+                <a href="/tags/rest-api/">rest api</a>, 
+                <a href="/tags/job/">job</a>, 
+                <a href="/tags/artifact/">artifact</a>, 
+                <a href="/tags/artifact-deletion/">artifact deletion</a>, 
+                <a href="/tags/artifact-expiration/">artifact expiration</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=GitLab%20CI%20Artifact%20Expiration&url=https%3a%2f%2ftest.arsano.ninja%2f2019%2f05%2f09%2fautomate-gitlab-artifact-deletion%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=GitLab%20CI%20Artifact%20Expiration&url=https%3a%2f%2ftest.arsano.ninja%2f2019%2f05%2f09%2fautomate-gitlab-artifact-deletion%2f&summary=Discussion%20on%20proper%20handling%20of%20GitLab%20CI%20Job%20Artifacts."
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2022 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://test.arsano.ninja/js/jquery-1.11.3.min.js"></script>
+        <script src="https://test.arsano.ninja/js/jquery.fitvids.js"></script>
+        <script src="https://test.arsano.ninja/js/scripts.js"></script>
+        
+    </body>
+</html>
+

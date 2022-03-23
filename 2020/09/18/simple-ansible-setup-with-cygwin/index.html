@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Quick Ansible Setup &middot; Chris Arceneaux</title>
+        <meta name="description" content="Installing Ansible with Cygwin">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.95.0" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Quick Ansible Setup">
+<meta property="og:description" content="Installing Ansible with Cygwin">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://test.arsano.ninja/2020/09/18/simple-ansible-setup-with-cygwin/">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/site.css">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/chris_arceneaux" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" aria-label="Gitlab" href="https://gitlab.com/carceneaux" rel="me">
+                                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/carceneaux" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/chris-arceneaux-8903047/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:carcenea@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/tags/">Tags</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Quick Ansible Setup</h1>
+    
+        <p class="post-description" itemprop="description">Installing Ansible with Cygwin</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2020-09-18" itemprop="datePublished">Fri, Sep 18, 2020</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://test.arsano.ninja/page/about/" itemprop="url" rel="author">Chris Arceneaux</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 4 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    <p><strong>NOTE:</strong> <em>This solution should only be used in non-production environments as a method to get familiar with Ansible. For production use, I recommend installing Ansible on a dedicated Linux server.</em></p>
+<p>An automated deployment tool is a must have for any IT environment. In my lab, that&rsquo;s <em><strong>Ansible</strong></em>. I&rsquo;ve used Ansible in my lab to automate VM deployment/destruction, adding SSH keys for remote access to my servers, joining/leaving AD domain, and monitoring the newly deployed VMs. This is very useful as I frequently deploy/destroy VMs for testing a specific use case.</p>
+<p>For a Windows admin, Ansible can seem daunting&hellip; For one, it runs on linux. Second, it&rsquo;s based off of Python. I&rsquo;m here to tell you, it&rsquo;s not that difficult. In fact, did you know that Ansible is one of the few configuration management tools out there that can easily/natively use PowerShell code?</p>
+<p>In this post, I&rsquo;m going to review the steps involved in getting Ansible installed &amp; running on Windows Server 2019. While install times may vary due to lab resources and internet speed, I&rsquo;m able to complete the steps outlined below for installing Ansible in a little over <strong>20 minutes</strong>.</p>
+<h2 id="my-lab-setup">My Lab Setup</h2>
+<ul>
+<li>Windows Server 2019 VM
+<ul>
+<li><em>Needs internet access</em></li>
+</ul>
+</li>
+<li>Logged in as default <code>administrator</code>
+<ul>
+<li>Another admin account will work, but you&rsquo;ll need to update some of the commands provided in this guide accordingly.</li>
+</ul>
+</li>
+</ul>
+<h2 id="video">Video</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/JFiUF5om1f8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="steps">Steps</h2>
+<ul>
+<li>Open an elevated PowerShell prompt
+<ul>
+<li>Right-click and select <em>Run as Administrator</em></li>
+</ul>
+</li>
+<li>PowerShell: <em>Copy/Paste code below</em>
+<ul>
+<li><a href="https://chocolatey.org/docs/installation">Install Chocolatey</a></li>
+<li>Install Cygwin</li>
+<li>Install Ansible requirements</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="no">[System.Net.ServicePointManager]</span><span class="p">::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="n">3072</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">choco</span> <span class="n">install</span> <span class="n">cygwin</span> <span class="nb">cyg-get</span> <span class="n">-y</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cyg-get</span> <span class="n">openssh</span> <span class="n">python38</span> <span class="nb">python38-pip</span> <span class="nb">python38-devel</span> <span class="nb">libssl-devel</span> <span class="nb">libffi-devel</span> <span class="nb">gcc-g</span><span class="p">++</span> <span class="nb">python38-cryptography</span>
+</span></span></code></pre></div><ul>
+<li>Open the newly installed <em>Cygwin Terminal</em></li>
+<li>Cygwin: <em>Copy/Paste code below</em>
+<ul>
+<li>Install Ansible</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/bin/python3.8.exe -m pip install wheel
+</span></span><span class="line"><span class="cl">/usr/bin/python3.8.exe -m pip install ansible
+</span></span></code></pre></div><ul>
+<li>PowerShell: <em>Copy/Paste code below</em>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse">Install OpenSSH Server</a></li>
+<li><a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration">Set default SSH shell to PowerShell</a></li>
+<li>Set SSH server to Automatic startup and start the service</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="n">OpenSSH</span><span class="p">.</span><span class="n">Server</span><span class="p">~~~~</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
+</span></span><span class="line"><span class="cl"><span class="nb">New-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&#34;HKLM:\SOFTWARE\OpenSSH&#34;</span> <span class="n">-Name</span> <span class="n">DefaultShell</span> <span class="n">-Value</span> <span class="s2">&#34;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&#34;</span> <span class="n">-PropertyType</span> <span class="n">String</span> <span class="n">-Force</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-Service</span> <span class="n">sshd</span> <span class="p">|</span> <span class="nb">Set-Service</span> <span class="n">-StartupType</span> <span class="n">Automatic</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Start-Service</span> <span class="n">sshd</span>
+</span></span></code></pre></div><ul>
+<li>Cygwin: <em>Copy/Paste code below</em>
+<ul>
+<li>Test Ansible by outputting version</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible --version
+</span></span></code></pre></div><p><img src="https://test.arsano.ninja/images/ansible-version-output.png" alt="Screenshot of Ansible version output"></p>
+<ul>
+<li>Cygwin: <em>Copy/Paste code below</em>
+<ul>
+<li>Generate SSH cert</li>
+<li>Accept defaults</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -t rsa -b <span class="m">2048</span>
+</span></span></code></pre></div><ul>
+<li>PowerShell: <em>Copy/Paste code below</em>
+<ul>
+<li><a href="https://www.concurrency.com/blog/may-2019/key-based-authentication-for-openssh-on-windows">Copy SSH pub cert to administrators_authorized_keys (Windows)</a></li>
+<li>Restart SSH server to apply changes</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cp </span><span class="n">C:</span><span class="p">\</span><span class="n">tools</span><span class="p">\</span><span class="n">cygwin</span><span class="p">\</span><span class="n">home</span><span class="p">\</span><span class="n">Administrator</span><span class="p">\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ssh</span><span class="p">\</span><span class="n">administrators_authorized_keys</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$acl</span> <span class="p">=</span> <span class="nb">Get-Acl</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ssh</span><span class="p">\</span><span class="n">administrators_authorized_keys</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$acl</span><span class="p">.</span><span class="n">SetAccessRuleProtection</span><span class="p">(</span><span class="nv">$true</span><span class="p">,</span> <span class="nv">$false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$administratorsRule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">system</span><span class="p">.</span><span class="n">security</span><span class="p">.</span><span class="n">accesscontrol</span><span class="p">.</span><span class="n">filesystemaccessrule</span><span class="p">(</span><span class="s2">&#34;Administrators&#34;</span><span class="p">,</span><span class="s2">&#34;FullControl&#34;</span><span class="p">,</span><span class="s2">&#34;Allow&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$systemRule</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">system</span><span class="p">.</span><span class="n">security</span><span class="p">.</span><span class="n">accesscontrol</span><span class="p">.</span><span class="n">filesystemaccessrule</span><span class="p">(</span><span class="s2">&#34;SYSTEM&#34;</span><span class="p">,</span><span class="s2">&#34;FullControl&#34;</span><span class="p">,</span><span class="s2">&#34;Allow&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$acl</span><span class="p">.</span><span class="n">SetAccessRule</span><span class="p">(</span><span class="nv">$administratorsRule</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$acl</span><span class="p">.</span><span class="n">SetAccessRule</span><span class="p">(</span><span class="nv">$systemRule</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$acl</span> <span class="p">|</span> <span class="nb">Set-Acl</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Restart-Service</span> <span class="n">sshd</span>
+</span></span></code></pre></div><ul>
+<li>Cygwin: <em>Copy/Paste code below</em>
+<ul>
+<li>Test SSH to verify it&rsquo;s working properly</li>
+<li>During the first run, you&rsquo;ll need to answer <code>yes</code></li>
+<li>After successful connection, you can <code>exit</code> the SSH session.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh administrator@<span class="k">$(</span>hostname<span class="k">)</span>
+</span></span></code></pre></div><ul>
+<li>Cygwin: <em>Copy/Paste code below</em>
+<ul>
+<li>Add Windows server to Ansible inventory</li>
+<li>Configure Ansible connectivity settings</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir /etc/ansible
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF &gt; /etc/ansible/ansible.cfg
+</span></span></span><span class="line"><span class="cl"><span class="s">[defaults]
+</span></span></span><span class="line"><span class="cl"><span class="s">host_key_checking = False
+</span></span></span><span class="line"><span class="cl"><span class="s">callback_whitelist = timer
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">[ssh_connection]
+</span></span></span><span class="line"><span class="cl"><span class="s">ssh_args = -o ControlMaster=no
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF &gt; /etc/ansible/hosts
+</span></span></span><span class="line"><span class="cl"><span class="s">[windows]
+</span></span></span><span class="line"><span class="cl"><span class="s">$(hostname)
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">mkdir /etc/ansible/group_vars
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF &gt; /etc/ansible/group_vars/windows.yml
+</span></span></span><span class="line"><span class="cl"><span class="s">ansible_user: administrator
+</span></span></span><span class="line"><span class="cl"><span class="s">ansible_connection: ssh
+</span></span></span><span class="line"><span class="cl"><span class="s">ansible_shell_type: powershell
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><ul>
+<li>Cygwin: <em>Copy/Paste code below</em>
+<ul>
+<li>Test to make sure Ansible can manage the windows server</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible <span class="k">$(</span>hostname<span class="k">)</span> -m win_ping
+</span></span></code></pre></div><p><img src="https://test.arsano.ninja/images/ansible-configuration-success.png" alt="Screenshot of configuration success"></p>
+<p>Ansible is now setup and ready for use. For me, this took around 20 minutes. This is a good point to take a snapshot of this VM or turn this server into a template depending on what you want to use Ansible for.</p>
+<p>Now let&rsquo;s put Ansible to use and perform an automated install of Veeam Backup &amp; Replication Server. As Ansible is now installed, <em>we will no longer be using the PowerShell session we had open and all further commands will be executed from within the Cygwin Terminal.</em></p>
+<ul>
+<li>Install Veeam Ansible collection: <em>Copy/Paste code below</em></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-galaxy collection install veeamhub.veeam
+</span></span></code></pre></div><ul>
+<li>Add Ansible Playbook: <em>Copy/Paste code below</em>
+<ul>
+<li>While it&rsquo;s not a requirement, I recommend you update the passwords below. Don&rsquo;t worry about creating these accounts. Ansible will do that for you!</li>
+<li><code>sql_install</code> is a temp Windows admin account used to install SQL Express</li>
+<li><code>sql_service</code> is the non-admin Windows account that the SQL service will use to run</li>
+<li><code>sql_username</code> is the SQL SA account that will be created for SQL Express</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF &gt; veeam-vbr-10-install.yml
+</span></span></span><span class="line"><span class="cl"><span class="s">---
+</span></span></span><span class="line"><span class="cl"><span class="s">- name: Veeam Backup &amp; Replication v10 Community Edition Install
+</span></span></span><span class="line"><span class="cl"><span class="s">  hosts: $(hostname)
+</span></span></span><span class="line"><span class="cl"><span class="s">  tasks:
+</span></span></span><span class="line"><span class="cl"><span class="s">    - include_role:
+</span></span></span><span class="line"><span class="cl"><span class="s">        name: veeamhub.veeam.veeam_vas
+</span></span></span><span class="line"><span class="cl"><span class="s">        tasks_from: vbr_install
+</span></span></span><span class="line"><span class="cl"><span class="s">      vars:
+</span></span></span><span class="line"><span class="cl"><span class="s">        iso_download: true
+</span></span></span><span class="line"><span class="cl"><span class="s">        sql_install_username: &#34;sql_install&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        sql_install_password: &#34;ChangeM3!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        sql_service_username: &#34;svc_sql&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        sql_service_password: &#34;ChangeM3!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        sql_username: &#34;sa&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        sql_password: &#34;ChangeM3!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">        # https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html#single-encrypted-variable
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span></code></pre></div><ul>
+<li>Install Veeam Backup &amp; Replication Server: <em>Copy/Paste code below</em></li>
+</ul>
+<p><em>Please note that this will first kick off a download of the Veeam ISO. ISO size is 3.8GB so your install time will vary. In my lab with gigabit internet, the time to complete the below playbook was 33 minutes.</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ansible-playbook veeam-vbr-10-install.yml
+</span></span></code></pre></div><p><img src="https://test.arsano.ninja/images/ansible-playbook-success.png" alt="Screenshot of Playbook Success"></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/ansible/">ansible</a>, 
+                <a href="/tags/cygwin/">cygwin</a>, 
+                <a href="/tags/windows/">windows</a>, 
+                <a href="/tags/server-2019/">server 2019</a>, 
+                <a href="/tags/windows-10/">windows 10</a>, 
+                <a href="/tags/openssh/">openssh</a>, 
+                <a href="/tags/chocolatey/">chocolatey</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=Quick%20Ansible%20Setup&url=https%3a%2f%2ftest.arsano.ninja%2f2020%2f09%2f18%2fsimple-ansible-setup-with-cygwin%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Quick%20Ansible%20Setup&url=https%3a%2f%2ftest.arsano.ninja%2f2020%2f09%2f18%2fsimple-ansible-setup-with-cygwin%2f&summary=Installing%20Ansible%20with%20Cygwin"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2022 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://test.arsano.ninja/js/jquery-1.11.3.min.js"></script>
+        <script src="https://test.arsano.ninja/js/jquery.fitvids.js"></script>
+        <script src="https://test.arsano.ninja/js/scripts.js"></script>
+        
+    </body>
+</html>
+

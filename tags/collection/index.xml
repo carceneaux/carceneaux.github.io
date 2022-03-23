@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>collection on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/collection/</link>
+    <description>Recent content in collection on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Wed, 03 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/collection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ansible Update for Veeam v11</title>
+      <link>https://test.arsano.ninja/2021/03/03/veeam-ansible-collection-v11/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2021/03/03/veeam-ansible-collection-v11/</guid>
+      <description>Veeam Backup &amp;amp; Replication v11 officially launched last week! With a new version of the product that is jam-packed with features, it&amp;rsquo;s no wonder that it&amp;rsquo;s already passed 15,000 unique downloads! Even before it was released, I was already being asked the question&amp;hellip;when will the Veeam Collection for Ansible support v11?
+The answer is&amp;hellip;right now! The collection now fully supports all major components of the Veeam Availablility Suite:
+ Veeam Backup &amp;amp; Replication Veeam Backup Enterprise Manager Veeam ONE  To the credit of the Veeam development team, there wasn&amp;rsquo;t much I had to do on my end for this.</description>
+    </item>
+    
+    <item>
+      <title>Veeam Ansible Collection</title>
+      <link>https://test.arsano.ninja/2020/04/27/veeam-ansible-collection/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2020/04/27/veeam-ansible-collection/</guid>
+      <description>After completing my PowerShell script to upgrade Veeam Backup &amp;amp; Replication environments to v10, I wanted to take the next step and automate the full lifecycle process. I&amp;rsquo;ve had Ansible in my sights for a while to do this as it can natively use PowerShell.
+Markus Kraus, a Veeam VanGaurd, started work along this same train of thought last year and recently updated the code to support Veeam Backup &amp;amp; Replication v10.</description>
+    </item>
+    
+  </channel>
+</rss>

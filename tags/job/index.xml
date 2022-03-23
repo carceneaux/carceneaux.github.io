@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>job on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/job/</link>
+    <description>Recent content in job on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Thu, 09 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/job/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitLab CI Artifact Expiration</title>
+      <link>https://test.arsano.ninja/2019/05/09/automate-gitlab-artifact-deletion/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2019/05/09/automate-gitlab-artifact-deletion/</guid>
+      <description>Note: If you&amp;rsquo;re unfamiliar with GitLab CI, I highly recommend you try it out on GitLab.com for free.
+A few months ago, the disk space on my on-prem GitLab instance began to fill up. Fortunately for me, my monitoring reported the issue before it became a major problem. My first thought was, why is this happening? I knew that I had provisioned more than enough space and there should be no reason it was almost full.</description>
+    </item>
+    
+  </channel>
+</rss>

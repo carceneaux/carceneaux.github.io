@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>veeam on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/veeam/</link>
+    <description>Recent content in veeam on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Wed, 23 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/veeam/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Veeam Backup for Microsoft 365 v6</title>
+      <link>https://test.arsano.ninja/2022/03/23/veeam-vb365-restore-portal-scripts/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2022/03/23/veeam-vb365-restore-portal-scripts/</guid>
+      <description>After completing my PowerShell script to upgrade Veeam Backup &amp;amp; Replication environments to v10, I wanted to take the next step and automate the full lifecycle process. I&amp;rsquo;ve had Ansible in my sights for a while to do this as it can natively use PowerShell.
+Markus Kraus, a Veeam VanGaurd, started work along this same train of thought last year and recently updated the code to support Veeam Backup &amp;amp; Replication v10.</description>
+    </item>
+    
+    <item>
+      <title>Automated Upgrade to Veeam v11</title>
+      <link>https://test.arsano.ninja/2021/03/09/veeam-unattended-upgrade-v11/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2021/03/09/veeam-unattended-upgrade-v11/</guid>
+      <description>After the release of Veeam Backup &amp;amp; Replication v10 last year, I wrote a PowerShell script to automate the upgrade. It&amp;rsquo;s as easy as they come as it enabled one-click upgrades of Veeam environments.
+With the release of v11, I wanted to continue the tradition to enable those with multiple Veeam servers, the easy button for mass upgrades to the latest version of the product. I&amp;rsquo;m happy to announce the release of an updated version of this script for v11!</description>
+    </item>
+    
+    <item>
+      <title>Ansible Update for Veeam v11</title>
+      <link>https://test.arsano.ninja/2021/03/03/veeam-ansible-collection-v11/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2021/03/03/veeam-ansible-collection-v11/</guid>
+      <description>Veeam Backup &amp;amp; Replication v11 officially launched last week! With a new version of the product that is jam-packed with features, it&amp;rsquo;s no wonder that it&amp;rsquo;s already passed 15,000 unique downloads! Even before it was released, I was already being asked the question&amp;hellip;when will the Veeam Collection for Ansible support v11?
+The answer is&amp;hellip;right now! The collection now fully supports all major components of the Veeam Availablility Suite:
+ Veeam Backup &amp;amp; Replication Veeam Backup Enterprise Manager Veeam ONE  To the credit of the Veeam development team, there wasn&amp;rsquo;t much I had to do on my end for this.</description>
+    </item>
+    
+    <item>
+      <title>Veeam Ansible Collection</title>
+      <link>https://test.arsano.ninja/2020/04/27/veeam-ansible-collection/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2020/04/27/veeam-ansible-collection/</guid>
+      <description>After completing my PowerShell script to upgrade Veeam Backup &amp;amp; Replication environments to v10, I wanted to take the next step and automate the full lifecycle process. I&amp;rsquo;ve had Ansible in my sights for a while to do this as it can natively use PowerShell.
+Markus Kraus, a Veeam VanGaurd, started work along this same train of thought last year and recently updated the code to support Veeam Backup &amp;amp; Replication v10.</description>
+    </item>
+    
+    <item>
+      <title>Veeam Plugin for vCD w/ SSO</title>
+      <link>https://test.arsano.ninja/2020/02/13/veeam-plugin-for-vcd-with-sso/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2020/02/13/veeam-plugin-for-vcd-with-sso/</guid>
+      <description>With the release of Veeam Backup &amp;amp; Replication version 10 around the corner, it&amp;rsquo;s only fitting that we get some added goodness with a new version of the Veeam Plugin for vCloud Director. I&amp;rsquo;m happy to announce that a new version of the plugin is available today!
+New features of the plugin include:
+ Single Sign-On (SSO) capability Support for Veeam Backup &amp;amp; Replication version 10 Support for VMware vCloud Director 10  Documentation for deployment &amp;amp; configuration of this plugin can be found here.</description>
+    </item>
+    
+    <item>
+      <title>First Look: Veeam Plugin for vCD </title>
+      <link>https://test.arsano.ninja/2019/09/27/introduction-veeam-plugin-for-vcd/</link>
+      <pubDate>Fri, 27 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2019/09/27/introduction-veeam-plugin-for-vcd/</guid>
+      <description>Veeam Backup &amp;amp; Replication version 9.5 released the vCloud Director (vCD) Self Service Portal that leverages Enterprise Manager and allows vCD Tenants to fully administer backups for their vCD workloads. Upon release, Veeam made consumption of this Self Service Portal as easy as possible as it leverages vCD authentication for tenants so they don&amp;rsquo;t have to manage two sets of credentials. Even so, it was still a separate portal independent of vCD.</description>
+    </item>
+    
+  </channel>
+</rss>

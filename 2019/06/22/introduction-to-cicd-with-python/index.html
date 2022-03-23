@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>An Introduction to CI/CD with Python &middot; Chris Arceneaux</title>
+        <meta name="description" content="Been wondering how CI/CD tools can take your Python scripts to the next level but don&#39;t know where to start? Expect some GitLab CI and Travis CI action with live demos and usage examples!">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.95.0" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="An Introduction to CI/CD with Python">
+<meta property="og:description" content="Been wondering how CI/CD tools can take your Python scripts to the next level but don&#39;t know where to start? Expect some GitLab CI and Travis CI action with live demos and usage examples!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://test.arsano.ninja/2019/06/22/introduction-to-cicd-with-python/">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/site.css">
+        <link rel="stylesheet" href="https://test.arsano.ninja/dist/syntax.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+        
+        
+        
+
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                            </h1>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" aria-label="Twitter" href="https://twitter.com/chris_arceneaux" rel="me" >
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" aria-label="Gitlab" href="https://gitlab.com/carceneaux" rel="me">
+                                <i class="fa fa-gitlab" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" aria-label="Github" href="https://github.com/carceneaux" rel="me">
+                                <i class="fa fa-github-alt" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" aria-label="LinkedIn" href="https://linkedin.com/in/chris-arceneaux-8903047/" rel="me">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" aria-label="Send an Email" href="mailto:carcenea@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a href="/tags/">Tags</a>
+    </li>
+
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An Introduction to CI/CD with Python</h1>
+    
+        <p class="post-description" itemprop="description">Been wondering how CI/CD tools can take your Python scripts to the next level but don&#39;t know where to start? Expect some GitLab CI and Travis CI action with live demos and usage examples!</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2019-06-22" itemprop="datePublished">Sat, Jun 22, 2019</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://test.arsano.ninja/page/about/" itemprop="url" rel="author">Chris Arceneaux</a>
+            </span>
+        </span>
+    </p>
+    
+        <p class="post-reading post-line">
+            <span>Estimated reading time: 1 min</span>
+        </p>
+    
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/zeqLTXNEbIo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="useful-links">Useful Links</h2>
+<ul>
+<li>GitLab CI
+<ul>
+<li><a href="https://gitlab.com/carceneaux/gitlab-ci-python-demo">GitLab CI Sample Code</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/examples/test-and-deploy-python-application-to-heroku.html">Test and deploy a Python application with GitLab CI/CD</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/ci_cd_for_external_repos/github_integration.html">Using GitLab CI/CD with a GitHub repository</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/">GitLab CI Documentation</a></li>
+</ul>
+</li>
+<li>Travis CI
+<ul>
+<li><a href="https://github.com/carceneaux/travis-ci-python-demo">Travis CI Sample Code</a></li>
+<li><a href="https://github.com/travis-ci/dpl">Travis CI DPL</a> - can be used with GitLab CI as well!</li>
+<li><a href="https://docs.travis-ci.com/">Travis CI Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+    <iframe
+        src="//www.slideshare.net/slideshow/embed_code/key/BZkEwBB9ybCB4K"
+        title="SlideShare Presentation"
+        height="400"
+        frameborder="0"
+        marginwidth="0"
+        marginheight="0"
+        scrolling="no"
+        style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 20px; width: 100%;"
+        allowfullscreen="true">
+    </iframe>
+
+
+</div>
+
+        <footer class="post-footer clearfix">
+        <p class="post-tags">
+            <span>Tagged:</span>
+                <a href="/tags/python/">python</a>, 
+                <a href="/tags/vbrownbag/">vbrownbag</a>, 
+                <a href="/tags/slides/">slides</a>, 
+                <a href="/tags/gitlabci/">gitlabci</a>, 
+                <a href="/tags/gitlab-ci/">gitlab ci</a>, 
+                <a href="/tags/travisci/">travisci</a>, 
+                <a href="/tags/travis-ci/">travis ci</a>, 
+                <a href="/tags/ci/cd/">ci/cd</a>
+        </p>
+    <div class="share">
+            <a class="icon-twitter" href="https://twitter.com/share?text=An%20Introduction%20to%20CI%2fCD%20with%20Python&url=https%3a%2f%2ftest.arsano.ninja%2f2019%2f06%2f22%2fintroduction-to-cicd-with-python%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=An%20Introduction%20to%20CI%2fCD%20with%20Python&url=https%3a%2f%2ftest.arsano.ninja%2f2019%2f06%2f22%2fintroduction-to-cicd-with-python%2f&summary=Been%20wondering%20how%20CI%2fCD%20tools%20can%20take%20your%20Python%20scripts%20to%20the%20next%20level%20but%20don%27t%20know%20where%20to%20start%3f%20Expect%20some%20GitLab%20CI%20and%20Travis%20CI%20action%20with%20live%20demos%20and%20usage%20examples%21"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;" aria-label="Share on LinkedIn">
+               <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a href="https://test.arsano.ninja/">A Journey in Automating the Datacenter</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#" aria-label="Back to Top">
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2022 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://test.arsano.ninja/js/jquery-1.11.3.min.js"></script>
+        <script src="https://test.arsano.ninja/js/jquery.fitvids.js"></script>
+        <script src="https://test.arsano.ninja/js/scripts.js"></script>
+        
+    </body>
+</html>
+

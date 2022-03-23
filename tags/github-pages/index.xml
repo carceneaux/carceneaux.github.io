@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github pages on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/github-pages/</link>
+    <description>Recent content in github pages on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automating GitHub Pages Deployment</title>
+      <link>https://test.arsano.ninja/2018/07/21/automating-github-pages-deployment/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/2018/07/21/automating-github-pages-deployment/</guid>
+      <description>Following the instructions for this post will enable you to use Travis-CI to deploy a Hugo-based website to GitHub Pages.
+When I set out to build the website for my blog, I knew I wanted to have the ability to dynamically generate my website as well as to be able to change the theme (appearance) of the website very easily. While researching the methods to accomplish this, two tools seemed to pop up the most:</description>
+    </item>
+    
+  </channel>
+</rss>

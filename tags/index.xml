@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on A Journey in Automating the Datacenter</title>
+    <link>https://test.arsano.ninja/tags/</link>
+    <description>Recent content in Tags on A Journey in Automating the Datacenter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Chris Arceneaux</copyright>
+    <lastBuildDate>Wed, 23 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://test.arsano.ninja/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>microsoft 365</title>
+      <link>https://test.arsano.ninja/tags/microsoft-365/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/microsoft-365/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>multi-tenant</title>
+      <link>https://test.arsano.ninja/tags/multi-tenant/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/multi-tenant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>powershell</title>
+      <link>https://test.arsano.ninja/tags/powershell/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/powershell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scripts</title>
+      <link>https://test.arsano.ninja/tags/scripts/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/scripts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>v6</title>
+      <link>https://test.arsano.ninja/tags/v6/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/v6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vb365</title>
+      <link>https://test.arsano.ninja/tags/vb365/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vb365/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vbo</title>
+      <link>https://test.arsano.ninja/tags/vbo/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vbo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>veeam</title>
+      <link>https://test.arsano.ninja/tags/veeam/</link>
+      <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/veeam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>11</title>
+      <link>https://test.arsano.ninja/tags/11/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>automation</title>
+      <link>https://test.arsano.ninja/tags/automation/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>em</title>
+      <link>https://test.arsano.ninja/tags/em/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/em/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unattended</title>
+      <link>https://test.arsano.ninja/tags/unattended/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/unattended/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>upgrade</title>
+      <link>https://test.arsano.ninja/tags/upgrade/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/upgrade/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>v11</title>
+      <link>https://test.arsano.ninja/tags/v11/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/v11/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vbr</title>
+      <link>https://test.arsano.ninja/tags/vbr/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vbr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible</title>
+      <link>https://test.arsano.ninja/tags/ansible/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>collection</title>
+      <link>https://test.arsano.ninja/tags/collection/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/collection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>one</title>
+      <link>https://test.arsano.ninja/tags/one/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/one/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>role</title>
+      <link>https://test.arsano.ninja/tags/role/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/role/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chris arceneaux</title>
+      <link>https://test.arsano.ninja/tags/chris-arceneaux/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/chris-arceneaux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>codeconnect</title>
+      <link>https://test.arsano.ninja/tags/codeconnect/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/codeconnect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>enhanced virtual disk</title>
+      <link>https://test.arsano.ninja/tags/enhanced-virtual-disk/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/enhanced-virtual-disk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fcd</title>
+      <link>https://test.arsano.ninja/tags/fcd/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/fcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>first class disk</title>
+      <link>https://test.arsano.ninja/tags/first-class-disk/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/first-class-disk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>improved virtual disk</title>
+      <link>https://test.arsano.ninja/tags/improved-virtual-disk/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/improved-virtual-disk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>managed virtual disk</title>
+      <link>https://test.arsano.ninja/tags/managed-virtual-disk/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/managed-virtual-disk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vmware code</title>
+      <link>https://test.arsano.ninja/tags/vmware-code/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vmware-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vmware codeconnect</title>
+      <link>https://test.arsano.ninja/tags/vmware-codeconnect/</link>
+      <pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vmware-codeconnect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chocolatey</title>
+      <link>https://test.arsano.ninja/tags/chocolatey/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/chocolatey/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cygwin</title>
+      <link>https://test.arsano.ninja/tags/cygwin/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/cygwin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openssh</title>
+      <link>https://test.arsano.ninja/tags/openssh/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/openssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>server 2019</title>
+      <link>https://test.arsano.ninja/tags/server-2019/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/server-2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://test.arsano.ninja/tags/windows/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows 10</title>
+      <link>https://test.arsano.ninja/tags/windows-10/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/windows-10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>self-service</title>
+      <link>https://test.arsano.ninja/tags/self-service/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/self-service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>single sign-on</title>
+      <link>https://test.arsano.ninja/tags/single-sign-on/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/single-sign-on/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sso</title>
+      <link>https://test.arsano.ninja/tags/sso/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/sso/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vcd</title>
+      <link>https://test.arsano.ninja/tags/vcd/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vcd extenstion</title>
+      <link>https://test.arsano.ninja/tags/vcd-extenstion/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vcd-extenstion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vcd plugin</title>
+      <link>https://test.arsano.ninja/tags/vcd-plugin/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vcd-plugin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vcloud director</title>
+      <link>https://test.arsano.ninja/tags/vcloud-director/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vcloud-director/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vcloud director self service tenant portal</title>
+      <link>https://test.arsano.ninja/tags/vcloud-director-self-service-tenant-portal/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vcloud-director-self-service-tenant-portal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>veeam extension for vcd</title>
+      <link>https://test.arsano.ninja/tags/veeam-extension-for-vcd/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/veeam-extension-for-vcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>veeam plugin for vcd</title>
+      <link>https://test.arsano.ninja/tags/veeam-plugin-for-vcd/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/veeam-plugin-for-vcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vmware vcloud director</title>
+      <link>https://test.arsano.ninja/tags/vmware-vcloud-director/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vmware-vcloud-director/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vssp</title>
+      <link>https://test.arsano.ninja/tags/vssp/</link>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vssp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlab ci</title>
+      <link>https://test.arsano.ninja/tags/gitlab-ci/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/gitlab-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlabci</title>
+      <link>https://test.arsano.ninja/tags/gitlabci/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/gitlabci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://test.arsano.ninja/tags/python/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>slides</title>
+      <link>https://test.arsano.ninja/tags/slides/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/slides/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>travis-ci</title>
+      <link>https://test.arsano.ninja/tags/travis-ci/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/travis-ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>travisci</title>
+      <link>https://test.arsano.ninja/tags/travisci/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/travisci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vbrownbag</title>
+      <link>https://test.arsano.ninja/tags/vbrownbag/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vbrownbag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>artifact</title>
+      <link>https://test.arsano.ninja/tags/artifact/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/artifact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>artifact deletion</title>
+      <link>https://test.arsano.ninja/tags/artifact-deletion/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/artifact-deletion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>artifact expiration</title>
+      <link>https://test.arsano.ninja/tags/artifact-expiration/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/artifact-expiration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bash</title>
+      <link>https://test.arsano.ninja/tags/bash/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlab</title>
+      <link>https://test.arsano.ninja/tags/gitlab/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>job</title>
+      <link>https://test.arsano.ninja/tags/job/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/job/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rest api</title>
+      <link>https://test.arsano.ninja/tags/rest-api/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/rest-api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github pages</title>
+      <link>https://test.arsano.ninja/tags/github-pages/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/github-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cloudfront</title>
+      <link>https://test.arsano.ninja/tags/cloudfront/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/cloudfront/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://test.arsano.ninja/tags/github/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>route53</title>
+      <link>https://test.arsano.ninja/tags/route53/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/route53/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>s3</title>
+      <link>https://test.arsano.ninja/tags/s3/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/s3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>usercon</title>
+      <link>https://test.arsano.ninja/tags/usercon/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/usercon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vmug</title>
+      <link>https://test.arsano.ninja/tags/vmug/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vmug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vrealize orchestrator</title>
+      <link>https://test.arsano.ninja/tags/vrealize-orchestrator/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vrealize-orchestrator/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vro</title>
+      <link>https://test.arsano.ninja/tags/vro/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/vro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://test.arsano.ninja/tags/ci/cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://test.arsano.ninja/tags/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
